@@ -1,0 +1,32 @@
+<section>
+  <div style="display: flex; flex-direction: column; align-items: center; padding: 1em
+">
+<!--      [formControl]="searchField"-->
+    <input
+      [(ngModel)]="fakeStoreDataSearch"
+      class="search__input"
+      type="text"
+      placeholder="Search for ..."
+      aria-label="Search Input"
+      autofocus />
+    <ul class="search__results">
+      <li class="search__results-list"></li>
+    </ul>
+  </div>
+</section>
+<section>
+  <div
+    class="fake-store-card"
+    *ngFor="let item of fakeStoreData | localSearch:fakeStoreDataSearch"
+  >
+    <div class="item-image"><img src="{{ item.image }}"></div>
+    <div class="item-description">
+      <div><span class="item-id">#{{ item.id }}</span><span class="item-category">{{ item.category }}</span></div>
+      <div class="item-title">{{ item.title }}</div>
+      <div class="item-description">{{ item.description }}</div>
+      <div class="price">{{ item.price | currency: 'EUR' : 'symbol' : '.2-2'}}</div>
+      <div class="reviews"><span class="item-rating">&starf;&nbsp;{{ item.rating.rate}}</span><span>— based on <u>{{ item.rating.count }}</u> reviews</span></div>
+    </div>
+
+  </div>
+</section>
